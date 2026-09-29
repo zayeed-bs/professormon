@@ -2,6 +2,7 @@ package com.cbl;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        // Create window & Start game
+        // Initialize pokemons
     }
 }
