@@ -1,6 +1,8 @@
 package com.cbl.professor;
 import javax.swing.ImageIcon;
 
+import com.cbl.professor.move.Move;
+
 public class Professor {
     final String name;
     // base stats that should not be changed
@@ -15,8 +17,6 @@ public class Professor {
     // variables that are changed by buffs/debuffs (current = crnt)
     int crntHp, crntAttack, crntDefense, crntSpeed;
 
-    boolean isStunned = false;
-
     public enum Type {
         LOGIC,
         CALCULUS,
@@ -24,12 +24,12 @@ public class Professor {
     } 
 
 
-    public Professor(String name, int hp, int attack, int defense, int speed, Move[] moves, Ability ability, Type type, ImageIcon sprite) {
+    public Professor(String name, int[] stats, Move[] moves, Ability ability, Type type, ImageIcon sprite) {
         this.name = name;
-        this.hp = hp;
-        this.attack = attack;
-        this.defense = defense;
-        this.speed = speed;
+        this.hp = stats[0];
+        this.attack = stats[1];
+        this.defense = stats[2];
+        this.speed = stats[3];
         this.moves = moves;
         this.ability = ability;
         this.type = type;
@@ -76,11 +76,6 @@ public class Professor {
     }
     public void modifySpeed(int modifier) {
         this.crntSpeed = modifyStat(speed, modifier);
-    }
-
-
-    public void stun() {
-        isStunned = true;
     }
 
 }
