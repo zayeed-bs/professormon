@@ -1,12 +1,26 @@
 package com.cbl.professor;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
 import com.cbl.professor.move.DamagingMove;
 import com.cbl.professor.move.Move;
 import com.cbl.professor.move.StatMove;
 
 public abstract class Library {
-    Move[] MOVES = new Move[12];
-    Professor[] professors = new Professor[3];
+    private Move[] MOVES = new Move[12];
+    private Professor[] professors = new Professor[3];
+
+    public Professor[] getProfessors() {
+        return professors;
+    }
+
+    public Move[] getMoves() {
+        return MOVES;
+    }
 
 
     // Professor definition
@@ -28,13 +42,26 @@ public abstract class Library {
         Move bjornStatSelf = new StatMove("End the lecture early", 3, true);
 
         // Sprites
+        BufferedImage basIMG = null;
+        BufferedImage keesIMG = null;
+        BufferedImage bjornIMG = null;
         
+        try {
+            basIMG = ImageIO.read(new File("src/main/java/com/cbl/professor/sprites/Bas.png"));
+            keesIMG = ImageIO.read(new File("src/main/java/com/cbl/professor/sprites/Bjorn.png"));
+            bjornIMG = ImageIO.read(new File("src/main/java/com/cbl/professor/sprites/Kees.png"));
+        } catch (Exception e) {
+            System.out.println("Problem loading sprites");
+        }
 
+        ImageIcon basSprite = new ImageIcon(basIMG);
+        ImageIcon keesSprite = new ImageIcon(keesIMG);
+        ImageIcon bjornSprite = new ImageIcon(bjornIMG);
 
         // Professors
-        Professor bas = new Professor("Bas Luttik", new int[] {30, 80, 30, 70}, new Move[] {basAttackHeavy, basAttackLight, basStatOpp, basStatSelf}, null, Professor.Type.LOGIC, null);
-        Professor kees = new Professor("Kees Huizing", new int[] {90, 20, 90, 15}, new Move[] {keesAttackHeavy, keesAttackLight, keesStatOpp, keesStatSelf}, null, Professor.Type.PROGRAMMING, null);
-        Professor bjorn = new Professor("Bjorn Baumeier", new int[] {60, 40, 45, 90}, new Move[] {bjornAttackHeavy, bjornAttackLight, bjornStatOpp, bjornStatSelf}, null, Professor.Type.CALCULUS, null);
+        Professor bas = new Professor("Bas Luttik", new int[] {30, 80, 30, 70}, new Move[] {basAttackHeavy, basAttackLight, basStatOpp, basStatSelf}, null, Professor.Type.LOGIC, basSprite);
+        Professor kees = new Professor("Kees Huizing", new int[] {90, 20, 90, 15}, new Move[] {keesAttackHeavy, keesAttackLight, keesStatOpp, keesStatSelf}, null, Professor.Type.PROGRAMMING, keesSprite);
+        Professor bjorn = new Professor("Bjorn Baumeier", new int[] {60, 40, 45, 90}, new Move[] {bjornAttackHeavy, bjornAttackLight, bjornStatOpp, bjornStatSelf}, null, Professor.Type.CALCULUS, bjornSprite);
     
         professors[0] = bas;
         professors[1] = kees;

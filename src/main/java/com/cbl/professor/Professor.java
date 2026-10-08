@@ -40,27 +40,39 @@ public class Professor {
     public String getName() {
         return name;
     }
+
     public int getHp() {
         return hp;
     }
+
     public int getAttack() {
         return attack;
     }
+
     public int getDefense() {
         return defense;
     }
+
     public int getSpeed() {
         return speed;
     }
+
     public Move[] getMoves() {
         return moves;
     }
+
     public Ability getAbility() {
         return ability;
     }
+
     public Type getType() {
         return type;
     }
+
+    public ImageIcon getSprite() {
+        return sprite;
+    }
+
 
     // buffs/debuffs
     public int modifyStat(int stat, int modifier) {
