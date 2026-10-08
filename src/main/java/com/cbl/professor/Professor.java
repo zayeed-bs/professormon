@@ -1,6 +1,8 @@
 package com.cbl.professor;
 import javax.swing.ImageIcon;
 
+import com.cbl.professor.move.Move;
+
 public class Professor {
     final String name;
     // base stats that should not be changed
@@ -15,8 +17,6 @@ public class Professor {
     // variables that are changed by buffs/debuffs (current = crnt)
     int crntHp, crntAttack, crntDefense, crntSpeed;
 
-    boolean isStunned = false;
-
     public enum Type {
         LOGIC,
         CALCULUS,
@@ -24,12 +24,12 @@ public class Professor {
     } 
 
 
-    public Professor(String name, int hp, int attack, int defense, int speed, Move[] moves, Ability ability, Type type, ImageIcon sprite) {
+    public Professor(String name, int[] stats, Move[] moves, Ability ability, Type type, ImageIcon sprite) {
         this.name = name;
-        this.hp = hp;
-        this.attack = attack;
-        this.defense = defense;
-        this.speed = speed;
+        this.hp = stats[0];
+        this.attack = stats[1];
+        this.defense = stats[2];
+        this.speed = stats[3];
         this.moves = moves;
         this.ability = ability;
         this.type = type;
@@ -40,27 +40,39 @@ public class Professor {
     public String getName() {
         return name;
     }
+
     public int getHp() {
         return hp;
     }
+
     public int getAttack() {
         return attack;
     }
+
     public int getDefense() {
         return defense;
     }
+
     public int getSpeed() {
         return speed;
     }
+
     public Move[] getMoves() {
         return moves;
     }
+
     public Ability getAbility() {
         return ability;
     }
+
     public Type getType() {
         return type;
     }
+
+    public ImageIcon getSprite() {
+        return sprite;
+    }
+
 
     // buffs/debuffs
     public int modifyStat(int stat, int modifier) {
@@ -76,11 +88,6 @@ public class Professor {
     }
     public void modifySpeed(int modifier) {
         this.crntSpeed = modifyStat(speed, modifier);
-    }
-
-
-    public void stun() {
-        isStunned = true;
     }
 
 }

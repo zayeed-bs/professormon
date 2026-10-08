@@ -1,4 +1,6 @@
 package com.cbl.window;
+import java.awt.FlowLayout;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -32,17 +34,19 @@ public class BattleScene {
         win.createWindow(500, 500, "Battle!");
 
         // Attach params from Professor class
-        ownName = new JLabel("self");
-        oppName = new JLabel("opponent");
+        win.frame.setLayout(new FlowLayout());
+    
+        ownName = new JLabel(ownProfessor.getName());
+        oppName = new JLabel(oppProfessor.getName());
 
-
-        ownSprite = new JLabel(new ImageIcon());
-        oppSprite = new JLabel(new ImageIcon());;
+        ownSprite = new JLabel(ownProfessor.getSprite());
+        oppSprite = new JLabel(oppProfessor.getSprite());;
 
         battleText = new JLabel("Battle Started");
         
         win.frame.add(ownName);
         win.frame.add(oppName);
+        
         win.frame.add(ownSprite);
         win.frame.add(oppSprite);
         win.frame.add(battleText);
