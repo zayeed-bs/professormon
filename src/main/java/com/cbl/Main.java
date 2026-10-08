@@ -7,6 +7,10 @@ public class Main {
         Library lib = new Library() {};
         lib.initializeLibrary();
 
+        // Choose pokemon
+        // StartMenu,java
+        // p1 professor, p2 professor
+
         BattleScene b = new BattleScene(lib.getProfessors()[0], lib.getProfessors()[1]);
         b.initializeBattleScene();
     }

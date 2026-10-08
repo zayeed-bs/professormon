@@ -1,0 +1,11 @@
+com/cbl/window/Window.class
+com/cbl/professor/Library.class
+com/cbl/professor/Ability.class
+com/cbl/professor/Professor$Type.class
+com/cbl/Main$1.class
+com/cbl/Main.class
+com/cbl/professor/move/StatMove.class
+com/cbl/professor/Professor.class
+com/cbl/professor/move/Move.class
+com/cbl/window/BattleScene.class
+com/cbl/professor/move/DamagingMove.class
