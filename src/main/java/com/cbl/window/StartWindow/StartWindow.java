@@ -37,16 +37,15 @@ public class StartWindow {
         ProfessorContainer basContainer = new ProfessorContainer(bas);
         ProfessorContainer keesContainer = new ProfessorContainer(kees);
         ProfessorContainer bjornContainer = new ProfessorContainer(bjorn);
+        
+        centerContainer.add(basContainer.initializeProfContainer());
+        centerContainer.add(basContainer.initializeProfContainer());
 
-        centerContainer.add(basContainer);
-        centerContainer.add(keesContainer);
-        centerContainer.add(bjornContainer);
+        centerContainer.add(keesContainer.initializeProfContainer());
+        centerContainer.add(keesContainer.initializeProfContainer());
 
-        centerContainer.add(basContainer);
-        centerContainer.add(keesContainer);
-        centerContainer.add(bjornContainer);
-
-
+        centerContainer.add(bjornContainer.initializeProfContainer());
+        centerContainer.add(bjornContainer.initializeProfContainer());
 
         win.frame.add(topContainer, BorderLayout.NORTH);
         win.frame.add(centerContainer, BorderLayout.CENTER);

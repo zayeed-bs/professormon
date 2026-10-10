@@ -66,7 +66,7 @@ public abstract class Library {
             keesIMG = ImageIO.read(new File("src/main/java/com/cbl/professor/sprites/Bjorn.png"));
             bjornIMG = ImageIO.read(new File("src/main/java/com/cbl/professor/sprites/Kees.png"));
         } catch (Exception e) {
-            System.out.println("Problem loading sprites");
+            System.out.println(e.getMessage());
         }
 
         ImageIcon basSprite = new ImageIcon(basIMG);
