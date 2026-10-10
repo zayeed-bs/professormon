@@ -41,6 +41,21 @@ public abstract class Library {
         Move bjornStatOpp = new StatMove("Tests at 7pm", 3, false);
         Move bjornStatSelf = new StatMove("End the lecture early", 3, true);
 
+        MOVES[0]  = basAttackLight;
+        MOVES[1]  = basAttackHeavy;
+        MOVES[2]  = basStatOpp;
+        MOVES[3]  = basStatSelf;
+
+        MOVES[4]  = keesAttackLight;
+        MOVES[5]  = keesAttackHeavy;
+        MOVES[6]  = keesStatOpp;
+        MOVES[7]  = keesStatSelf;
+
+        MOVES[8]  = bjornAttackLight;
+        MOVES[9]  = bjornAttackHeavy;
+        MOVES[10] = bjornStatOpp;
+        MOVES[11] = bjornStatSelf;
+
         // Sprites
         BufferedImage basIMG = null;
         BufferedImage keesIMG = null;
