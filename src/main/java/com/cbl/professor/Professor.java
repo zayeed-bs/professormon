@@ -15,7 +15,7 @@ public class Professor {
     final ImageIcon sprite; 
     
     // variables that are changed by buffs/debuffs (current = crnt)
-    int crntHp, crntAttack, crntDefense, crntSpeed;
+    int currentHp, currentAttack, currentDefense, currentSpeed;
 
     public enum Type {
         LOGIC,
@@ -27,9 +27,16 @@ public class Professor {
     public Professor(String name, int[] stats, Move[] moves, Ability ability, Type type, ImageIcon sprite) {
         this.name = name;
         this.hp = stats[0];
+
         this.attack = stats[1];
         this.defense = stats[2];
         this.speed = stats[3];
+
+        this.currentAttack = attack;
+        this.currentDefense = defense;
+        this.currentSpeed = speed;
+        this.currentHp = hp;
+
         this.moves = moves;
         this.ability = ability;
         this.type = type;
@@ -75,19 +82,15 @@ public class Professor {
 
 
     // buffs/debuffs
-    public int modifyStat(int stat, int modifier) {
+    public boolean modifyStat(int statIndex, int modifier) {
         // now modifier is flat, cuz percetage based can change int to float (dont know is that is a problem)
-        int newStat = stat + modifier;
-        return newStat;
-    }
-    public void modifyAttack(int modifier) {
-        this.crntAttack = modifyStat(attack, modifier);
-    }
-    public void modifyDefense(int modifier) {
-        this.crntDefense = modifyStat(defense, modifier);
-    }
-    public void modifySpeed(int modifier) {
-        this.crntSpeed = modifyStat(speed, modifier);
-    }
+        int statVal = new int[]{currentAttack, currentDefense, currentSpeed}[statIndex];
 
+        if(statVal == 100 | statVal == 1) {
+            return false;
+        }
+
+        new int[]{currentAttack, currentDefense, currentSpeed}[statIndex] = Math.clamp(statVal + modifier, 1, 100);
+        return true;
+    }
 }

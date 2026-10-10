@@ -9,6 +9,12 @@ public class StatMove extends Move {
         this.statToChange = statToChange;
         this.onSelf = onSelf;
     }
-}
 
-// givelecutr = new StatMove()
+    public int GetStatToChange() {
+        return statToChange;
+    }
+
+    public boolean GetOnSelf() {
+        return onSelf;
+    }
+}
