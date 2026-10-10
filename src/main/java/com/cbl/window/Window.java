@@ -1,6 +1,5 @@
 package com.cbl.window;
-import java.io.*;
-import javax.swing.*;
+import javax.swing.JFrame;
 
 public class Window {
     public JFrame frame;
@@ -10,6 +9,7 @@ public class Window {
         frame = new JFrame(title);
         frame.setSize(w, h);
 
+        frame.setLocationRelativeTo(null); //centers the window to the center of the screen
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
