@@ -63,8 +63,8 @@ public abstract class Library {
         
         try {
             basIMG = ImageIO.read(new File("src/main/java/com/cbl/professor/sprites/Bas.png"));
-            keesIMG = ImageIO.read(new File("src/main/java/com/cbl/professor/sprites/Bjorn.png"));
-            bjornIMG = ImageIO.read(new File("src/main/java/com/cbl/professor/sprites/Kees.png"));
+            keesIMG = ImageIO.read(new File("src/main/java/com/cbl/professor/sprites/Kees.png"));
+            bjornIMG = ImageIO.read(new File("src/main/java/com/cbl/professor/sprites/Bjorn.png"));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -3,6 +3,8 @@ package com.cbl.window.StartWindow;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -23,7 +25,7 @@ public class StartWindow {
     }
     public void initializeStartWindow() {
         win = new Window();
-        win.createWindow(500, 500, "Start Menu");
+        win.createWindow(900, 600, "Start Menu");
 
         win.frame.setLayout(new BorderLayout());
 
@@ -37,18 +39,45 @@ public class StartWindow {
         ProfessorContainer basContainer = new ProfessorContainer(bas);
         ProfessorContainer keesContainer = new ProfessorContainer(kees);
         ProfessorContainer bjornContainer = new ProfessorContainer(bjorn);
-        
-        centerContainer.add(basContainer.initializeProfContainer());
-        centerContainer.add(basContainer.initializeProfContainer());
+        ButtonGroup p1SelectionGroup = new ButtonGroup();
+        ButtonGroup p2SelectionGroup = new ButtonGroup();
 
-        centerContainer.add(keesContainer.initializeProfContainer());
-        centerContainer.add(keesContainer.initializeProfContainer());
+        centerContainer.add(basContainer.initializeProfContainer(p1SelectionGroup));
+        centerContainer.add(basContainer.initializeProfContainer(p2SelectionGroup));
 
-        centerContainer.add(bjornContainer.initializeProfContainer());
-        centerContainer.add(bjornContainer.initializeProfContainer());
+        centerContainer.add(keesContainer.initializeProfContainer(p1SelectionGroup));
+        centerContainer.add(keesContainer.initializeProfContainer(p2SelectionGroup));
+
+        centerContainer.add(bjornContainer.initializeProfContainer(p1SelectionGroup));
+        centerContainer.add(bjornContainer.initializeProfContainer(p2SelectionGroup));
+
+
+        JPanel bottomContainer = new JPanel();
+        JButton starButton = new JButton("BATTLE!");
+        bottomContainer.add(starButton);
+        starButton.addActionListener(e -> {
+            // check if the button was selected
+            if (p1SelectionGroup.getSelection() == null || p2SelectionGroup.getSelection() == null) {
+                starButton.setText("SELECT YOUR PROFESSOR!");
+                return;
+            }
+
+            String p1ChosenProfessor = p1SelectionGroup.getSelection().getActionCommand();
+            String p2ChosenProfessor = p2SelectionGroup.getSelection().getActionCommand();
+
+            for (String profNme : new String[] {"Bas Luttik", "Kees Huizing", "Bjorn Baumeier"}) {
+                if (p1ChosenProfessor.equals(profNme)) {
+                    System.out.println("P1: " + p1ChosenProfessor);
+                }
+                if (p2ChosenProfessor.equals(profNme)) {
+                    System.out.println("P2: " + p2ChosenProfessor);
+                }
+            }
+        });
 
         win.frame.add(topContainer, BorderLayout.NORTH);
         win.frame.add(centerContainer, BorderLayout.CENTER);
+        win.frame.add(starButton, BorderLayout.SOUTH);
 
         win.frame.setVisible(true);
     }
