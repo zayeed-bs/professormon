@@ -14,13 +14,11 @@ public class BattleLogic {
         // handle damage / stat affect
         for (int i = 0; i < 2; i++) {
             Professor p = profs[i];
-            System.out.println(p.name);
+
             if (moveMap.get(p) instanceof DamagingMove) {
                 int damage = calculateDamage((DamagingMove) moveMap.get(p), p, getOther(profs, i));
-                System.out.println(damage);
             } else if (moveMap.get(p) instanceof StatMove) {
                 boolean updatedStat = updateStats((StatMove) moveMap.get(p), p, getOther(profs, i));
-                System.out.println(updatedStat);
             }
         }
         // check death
@@ -31,7 +29,6 @@ public class BattleLogic {
 
         if(p[0].currentSpeed > p[1].currentSpeed) {
             // same order, .clone to avoid errors
-            System.out.println(p[0].currentSpeed + "is greater than" + p[1].currentSpeed);
             p_sorted = p.clone();
         } else if (p[0].currentSpeed == p[1].currentSpeed){
             // Speeds are matched, decide randomly
@@ -41,12 +38,8 @@ public class BattleLogic {
             p_sorted[0] = p[randomIndex];
             p_sorted[1] = randomIndex == 0 ? p[1] : p[0];
 
-            System.out.println("fuck me");
-
         } else {
             // reverse order
-            System.out.println(p[0].currentSpeed + "is less than" + p[1].currentSpeed);
-
             p_sorted[0] = p[1];
             p_sorted[1] = p[0];
         }

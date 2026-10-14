@@ -26,8 +26,8 @@ public class Main {
         // StartMenu,java
         // p1 professor, p2 professor
 
-        BattleScene b = new BattleScene(lib.getProfessors()[0], lib.getProfessors()[2]);
-        b.initializeBattleScene();
+        // BattleScene b = new BattleScene(lib.getProfessors()[0], lib.getProfessors()[2]);
+        // b.initializeBattleScene();
 
         StartWindow start = new StartWindow(lib.getProfessors()[0], lib.getProfessors()[1], lib.getProfessors()[2]);
         start.initializeStartWindow();
