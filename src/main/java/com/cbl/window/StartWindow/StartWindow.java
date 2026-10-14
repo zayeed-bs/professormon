@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import com.cbl.professor.Professor;
 import com.cbl.window.Window;
+import com.cbl.professor.Library;
 
 public class StartWindow {
     Professor bas;
@@ -23,9 +24,12 @@ public class StartWindow {
         this.kees = kees;
         this.bjorn = bjorn;
     }
+
     public void initializeStartWindow() {
+        Professor[] profs = new Professor[2];
+
         win = new Window();
-        win.createWindow(900, 600, "Start Menu");
+        win.createWindow(1280, 720, "Start Menu");
 
         win.frame.setLayout(new BorderLayout());
 
@@ -65,15 +69,16 @@ public class StartWindow {
             String p1ChosenProfessor = p1SelectionGroup.getSelection().getActionCommand();
             String p2ChosenProfessor = p2SelectionGroup.getSelection().getActionCommand();
 
-            for (String profNme : new String[] {"Bas Luttik", "Kees Huizing", "Bjorn Baumeier"}) {
-                if (p1ChosenProfessor.equals(profNme)) {
-                    System.out.println("P1: " + p1ChosenProfessor);
-                }
-                if (p2ChosenProfessor.equals(profNme)) {
-                    System.out.println("P2: " + p2ChosenProfessor);
-                }
-            }
+            profs[0] = getProfFromName(p1ChosenProfessor);
+            profs[1] = getProfFromName(p2ChosenProfessor);
+
+            // Initialize battle scene with professors
+            System.out.println(profs[0].getName());
+            System.out.println(profs[1].getName());
+            
+            closeStartWindow();
         });
+        
 
         win.frame.add(topContainer, BorderLayout.NORTH);
         win.frame.add(centerContainer, BorderLayout.CENTER);
@@ -82,4 +87,21 @@ public class StartWindow {
         win.frame.setVisible(true);
     }
     
+    private Professor getProfFromName(String name) {
+        Library lib = new Library() {};
+        lib.initializeLibrary();
+        Professor[] profs = lib.getProfessors();
+
+        for (Professor prof : profs) {
+            if (prof.getName().equals(name)) {
+                return prof;
+            }
+        }
+
+        return null;
+    }
+
+    public void closeStartWindow() {
+        win.frame.setVisible(false);
+    }
 }
