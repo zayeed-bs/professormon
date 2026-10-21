@@ -29,7 +29,7 @@ public abstract class Library {
         Move basAttackLight = new DamagingMove("No Laptops", 30);
         Move basAttackHeavy = new DamagingMove("Do you have a question?", 60);
         Move basStatOpp = new StatMove("Weekly Test", 3, false);
-        Move basStatSelf = new StatMove("", 2, true);
+        Move basStatSelf = new StatMove("Move towards the center", 2, true);
 
         Move keesAttackLight = new DamagingMove("Turn off screen", 30);
         Move keesAttackHeavy = new DamagingMove("Give Lecture", 60);
