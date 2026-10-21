@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import com.cbl.professor.Professor;
 import com.cbl.window.Window;
 import com.cbl.professor.Library;
+import com.cbl.window.BattleScene;
 
 public class StartWindow {
     Professor bas;
@@ -73,6 +74,8 @@ public class StartWindow {
             profs[1] = getProfFromName(p2ChosenProfessor);
 
             // Initialize battle scene with professors
+            BattleScene battleScene = new BattleScene(bjorn, bas);
+            
             System.out.println(profs[0].getName());
             System.out.println(profs[1].getName());
             
