@@ -5,7 +5,7 @@ import com.cbl.professor.BattleLogic;
 import com.cbl.professor.Library;
 import com.cbl.professor.Professor;
 import com.cbl.professor.move.Move;
-import com.cbl.window.BattleScene;
+import com.cbl.window.BattleScene.BattleScene;
 import com.cbl.window.StartWindow.StartWindow;
 
 public class Main {

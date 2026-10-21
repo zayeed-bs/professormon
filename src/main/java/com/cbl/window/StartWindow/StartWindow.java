@@ -8,10 +8,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.cbl.professor.Professor;
-import com.cbl.window.Window;
 import com.cbl.professor.Library;
-import com.cbl.window.BattleScene;
+import com.cbl.professor.Professor;
+import com.cbl.window.BattleScene.BattleScene;
+import com.cbl.window.Window;
+
 
 public class StartWindow {
     Professor bas;
@@ -80,6 +81,9 @@ public class StartWindow {
             System.out.println(profs[1].getName());
             
             closeStartWindow();
+            BattleScene BattleScene = new BattleScene(profs[0], profs[1]);
+            BattleScene.initializeBattleScene();
+            BattleScene.OpenBattleScene();
         });
         
 
