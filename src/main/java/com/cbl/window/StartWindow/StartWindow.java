@@ -75,11 +75,6 @@ public class StartWindow {
             profs[1] = getProfFromName(p2ChosenProfessor);
 
             // Initialize battle scene with professors
-            BattleScene battleScene = new BattleScene(bjorn, bas);
-            
-            System.out.println(profs[0].getName());
-            System.out.println(profs[1].getName());
-            
             closeStartWindow();
             BattleScene BattleScene = new BattleScene(profs[0], profs[1]);
             BattleScene.initializeBattleScene();
