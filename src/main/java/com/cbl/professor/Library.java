@@ -28,18 +28,18 @@ public abstract class Library {
         // Moves
         Move basAttackLight = new DamagingMove("No Laptops", 30);
         Move basAttackHeavy = new DamagingMove("Do you have a question?", 60);
-        Move basStatOpp = new StatMove("Weekly Test", 3, false);
-        Move basStatSelf = new StatMove("Move towards the center", 2, true);
+        Move basStatOpp = new StatMove("Weekly Test", 2, false);
+        Move basStatSelf = new StatMove("Move towards the center", 1, true);
 
         Move keesAttackLight = new DamagingMove("Turn off screen", 30);
         Move keesAttackHeavy = new DamagingMove("Give Lecture", 60);
-        Move keesStatOpp = new StatMove("Tell a joke", 2, false);
-        Move keesStatSelf = new StatMove("Random Analogy", 1, true);
+        Move keesStatOpp = new StatMove("Tell a joke", 1, false);
+        Move keesStatSelf = new StatMove("Random Analogy", 0, true);
 
         Move bjornAttackLight = new DamagingMove("Follow the recipe", 30);
         Move bjornAttackHeavy = new DamagingMove("Complete the square", 60);
-        Move bjornStatOpp = new StatMove("Tests at 7pm", 3, false);
-        Move bjornStatSelf = new StatMove("End the lecture early", 3, true);
+        Move bjornStatOpp = new StatMove("Tests at 7pm", 2, false);
+        Move bjornStatSelf = new StatMove("End the lecture early", 2, true);
 
         MOVES[0]  = basAttackLight;
         MOVES[1]  = basAttackHeavy;

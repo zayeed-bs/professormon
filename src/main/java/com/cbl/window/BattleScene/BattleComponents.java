@@ -19,7 +19,10 @@ import com.cbl.professor.move.Move;
 
 public class BattleComponents {
     Professor p1Prof, p2Prof;
-    private final Map<Professor, Move> selectedMoves = new HashMap<>();
+    public HashMap<Professor, Move> selectedMoves = new HashMap<>();
+
+    public JButton continueButton;
+    private JLabel text;
 
     public BattleComponents(Professor p1Prof, Professor p2Prof) {
         this.p1Prof = p1Prof;
@@ -35,7 +38,7 @@ public class BattleComponents {
             JButton moveButton = new JButton(moveName);
             moveButton.addActionListener(event -> {
                 selectedMoves.put(p, move);
-                battleLog.setText(p.getName() + " used " + move.getName());
+                battleLog.setText(p.getName() + " selected " + move.getName());
             });
             movesCont.add(moveButton);
 
@@ -67,9 +70,9 @@ public class BattleComponents {
         
         JPanel middle = new JPanel();
         middle.setLayout(new BorderLayout());
-        JLabel text = new JLabel("LOG", SwingConstants.CENTER);
+        text = new JLabel("Battle Start!", SwingConstants.CENTER);
         middle.add(text, BorderLayout.CENTER);
-        JButton continueButton = new JButton("CONTINUE");
+        continueButton = new JButton("CONTINUE");
         middle.add(continueButton, BorderLayout.PAGE_END);
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 0.5;
@@ -103,5 +106,9 @@ public class BattleComponents {
         battlefield.add(p1Panel);
         battlefield.add(p2Panel);
         return battlefield;
+    }
+
+    public void UpdateBattleText(String t) {
+        text.setText(t);
     }
 }
