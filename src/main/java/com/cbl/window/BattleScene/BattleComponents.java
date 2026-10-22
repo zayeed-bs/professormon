@@ -65,14 +65,17 @@ public class BattleComponents {
         controls.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
-        // test
+        JPanel middle = new JPanel();
+        middle.setLayout(new BorderLayout());
         JLabel text = new JLabel("LOG", SwingConstants.CENTER);
+        middle.add(text, BorderLayout.CENTER);
+        JButton continueButton = new JButton("CONTINUE");
+        middle.add(continueButton, BorderLayout.PAGE_END);
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 0.5;
         c.gridx = 1;
         c.gridy = 0;
-        text.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        controls.add(text, c);
+        controls.add(middle, c);
 
         JPanel movesP1 = MovesContainer(this.p1Prof, text);
         c.fill = GridBagConstraints.BOTH;
