@@ -74,9 +74,9 @@ public abstract class Library {
         ImageIcon bjornSprite = new ImageIcon(bjornIMG);
 
         // Professors
-        Professor bas = new Professor("Bas Luttik", new int[] {30, 80, 30, 70}, new Move[] {basAttackHeavy, basAttackLight, basStatOpp, basStatSelf}, null, Professor.Type.LOGIC, basSprite);
-        Professor kees = new Professor("Kees Huizing", new int[] {90, 20, 90, 15}, new Move[] {keesAttackHeavy, keesAttackLight, keesStatOpp, keesStatSelf}, null, Professor.Type.PROGRAMMING, keesSprite);
-        Professor bjorn = new Professor("Bjorn Baumeier", new int[] {60, 40, 45, 90}, new Move[] {bjornAttackHeavy, bjornAttackLight, bjornStatOpp, bjornStatSelf}, null, Professor.Type.CALCULUS, bjornSprite);
+        Professor bas = new Professor("Bas Luttik", new int[] {30, 80, 30, 70}, new Move[] {basAttackHeavy, basAttackLight, basStatOpp, basStatSelf}, Professor.Type.LOGIC, basSprite);
+        Professor kees = new Professor("Kees Huizing", new int[] {90, 20, 90, 15}, new Move[] {keesAttackHeavy, keesAttackLight, keesStatOpp, keesStatSelf}, Professor.Type.PROGRAMMING, keesSprite);
+        Professor bjorn = new Professor("Bjorn Baumeier", new int[] {60, 40, 45, 90}, new Move[] {bjornAttackHeavy, bjornAttackLight, bjornStatOpp, bjornStatSelf}, Professor.Type.CALCULUS, bjornSprite);
     
         professors[0] = bas;
         professors[1] = kees;

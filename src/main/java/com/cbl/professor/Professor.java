@@ -10,12 +10,11 @@ public class Professor {
     // number of moves is hard coded here¨
     int hp;
     Move[] moves = new Move[4];
-    Ability ability;
     Type type;
     final ImageIcon sprite; 
     
     // variables that are changed by buffs/debuffs (current = crnt)
-    int currentHp, currentAttack, currentDefense, currentSpeed;
+    public int currentHp, currentAttack, currentDefense, currentSpeed;
 
     public enum Type {
         LOGIC,
@@ -24,7 +23,7 @@ public class Professor {
     } 
 
 
-    public Professor(String name, int[] stats, Move[] moves, Ability ability, Type type, ImageIcon sprite) {
+    public Professor(String name, int[] stats, Move[] moves, Type type, ImageIcon sprite) {
         this.name = name;
         this.hp = stats[0];
 
@@ -38,7 +37,6 @@ public class Professor {
         this.currentHp = hp;
 
         this.moves = moves;
-        this.ability = ability;
         this.type = type;
         this.sprite = sprite;
     }
@@ -68,10 +66,6 @@ public class Professor {
         return moves;
     }
 
-    public Ability getAbility() {
-        return ability;
-    }
-
     public Type getType() {
         return type;
     }
@@ -83,14 +77,26 @@ public class Professor {
 
     // buffs/debuffs
     public boolean modifyStat(int statIndex, int modifier) {
-        // now modifier is flat, cuz percetage based can change int to float (dont know is that is a problem)
-        int statVal = new int[]{currentAttack, currentDefense, currentSpeed}[statIndex];
+        int statVal;
 
-        if(statVal == 100 | statVal == 1) {
+        switch (statIndex) {
+            case 0: statVal = currentAttack; break;
+            case 1: statVal = currentDefense; break;
+            case 2: statVal = currentSpeed; break;
+            default: throw new IllegalArgumentException("Unknown stat index: " + statIndex);
+        }
+
+        int newVal = Math.max(1, Math.min(100, statVal + modifier));
+        if (newVal == statVal) {
             return false;
         }
 
-        new int[]{currentAttack, currentDefense, currentSpeed}[statIndex] = Math.clamp(statVal + modifier, 1, 100);
+        switch (statIndex) {
+            case 0: currentAttack = newVal; break;
+            case 1: currentDefense = newVal; break;
+            case 2: currentSpeed = newVal; break;
+        }
+
         return true;
     }
 }

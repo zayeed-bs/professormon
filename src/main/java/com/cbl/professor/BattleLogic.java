@@ -77,7 +77,7 @@ public class BattleLogic {
     public int calculateDamage(DamagingMove move, Professor attacker, Professor defender) {
         // damage formula
         // variation between 0.75x to 1.25x
-        double ratio = 2.0 * attacker.getAttack() / (attacker.getAttack() + defender.getDefense());
+        double ratio = 2.0 * attacker.currentAttack / (attacker.currentAttack + defender.currentDefense);
         double damage = move.getBaseDamage() * ratio * 0.5;
 
         Random rng = new Random();
@@ -99,7 +99,6 @@ public class BattleLogic {
 
     public void updateHp(int damage, Professor p) {
         p.currentHp -= damage;
-        System.out.println("set " + p.getName() + "'s hp to " + p.currentHp + " damage was " + damage);
     }
 
     public Professor getOther(Professor[] p, int i) {
