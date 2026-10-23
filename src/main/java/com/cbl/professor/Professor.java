@@ -1,4 +1,5 @@
 package com.cbl.professor;
+
 import javax.swing.ImageIcon;
 
 import com.cbl.professor.move.Move;
@@ -6,7 +7,9 @@ import com.cbl.professor.move.Move;
 public class Professor {
     final String name;
     // base stats that should not be changed
-    final int attack, defense, speed;
+    final int attack;
+    final int defense;
+    final int speed;
     // number of moves is hard coded here¨
     int hp;
     Move[] moves = new Move[4];
@@ -14,7 +17,10 @@ public class Professor {
     final ImageIcon sprite; 
     
     // variables that are changed by buffs/debuffs (current = crnt)
-    public int currentHp, currentAttack, currentDefense, currentSpeed;
+    public int currentHp;
+    public int currentAttack;
+    public int currentDefense;
+    public int currentSpeed;
 
     public enum Type {
         LOGIC,
@@ -73,6 +79,10 @@ public class Professor {
     public ImageIcon getSprite() {
         return sprite;
     }
+    
+    public int getCurrentHp() {
+        return currentHp;
+    }
 
 
     // buffs/debuffs
@@ -80,10 +90,10 @@ public class Professor {
         int statVal;
 
         switch (statIndex) {
-            case 0: statVal = currentAttack; break;
-            case 1: statVal = currentDefense; break;
-            case 2: statVal = currentSpeed; break;
-            default: throw new IllegalArgumentException("Unknown stat index: " + statIndex);
+            case 0 -> statVal = currentAttack;
+            case 1 -> statVal = currentDefense;
+            case 2 -> statVal = currentSpeed;
+            default -> throw new IllegalArgumentException("Unknown stat index: " + statIndex);
         }
 
         int newVal = Math.max(1, Math.min(100, statVal + modifier));
@@ -92,9 +102,12 @@ public class Professor {
         }
 
         switch (statIndex) {
-            case 0: currentAttack = newVal; break;
-            case 1: currentDefense = newVal; break;
-            case 2: currentSpeed = newVal; break;
+            case 0 -> currentAttack = newVal;
+            case 1 -> currentDefense = newVal;
+            case 2 -> currentSpeed = newVal;
+            default -> {
+                break;
+            }
         }
 
         return true;

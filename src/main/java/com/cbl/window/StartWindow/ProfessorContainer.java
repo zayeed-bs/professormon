@@ -17,11 +17,11 @@ import com.cbl.professor.move.Move;
 
 public class ProfessorContainer {
     final String name;
-    int hp, attack, defense, speed;
+    int hp;
+    int attack;
+    int defense;
+    int speed;
     Move[] moves = new Move[4];
-
-    // fuck ability
-
     Professor.Type type;
     final ImageIcon sprite; 
 
@@ -35,6 +35,7 @@ public class ProfessorContainer {
         this.type = prof.getType();
         this.sprite = prof.getSprite();
     }
+    
     public JPanel initializeProfContainer(ButtonGroup buttonGroup) {
         JPanel container = new JPanel();
         container.setLayout(new GridLayout());

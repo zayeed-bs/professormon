@@ -6,7 +6,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -17,19 +16,23 @@ import javax.swing.SwingConstants;
 import com.cbl.professor.Professor;
 import com.cbl.professor.move.Move;
 
+
 public class BattleComponents {
-    Professor p1Prof, p2Prof;
+    Professor p1Prof;
+    Professor p2Prof;
     public HashMap<Professor, Move> selectedMoves = new HashMap<>();
 
     public JButton continueButton;
     private JLabel text;
+    private PlayerPanel p1Panel;
+    private PlayerPanel p2Panel;
 
     public BattleComponents(Professor p1Prof, Professor p2Prof) {
         this.p1Prof = p1Prof;
         this.p2Prof = p2Prof;
     }
 
-    public JPanel MovesContainer(Professor p, JLabel battleLog) {
+    public JPanel movesContainer(Professor p, JLabel battleLog) {
         JPanel movesCont = new JPanel();
         movesCont.setLayout(new GridLayout(4, 1));
         Move[] moves = p.getMoves();
@@ -50,19 +53,7 @@ public class BattleComponents {
         return selectedMoves.get(p);
     }
 
-    public JPanel PlayerPanel(Professor p) {
-        JPanel playerCont = new JPanel();
-        playerCont.setLayout(new BorderLayout());
-        JLabel hpLabel = new JLabel("HP: " + p.getHp());
-        playerCont.add(hpLabel, BorderLayout.NORTH);
-        
-        JLabel spriteImage = new JLabel(p.getSprite());
-        playerCont.add(spriteImage, BorderLayout.CENTER);
-        
-        return playerCont;
-    }
-
-    public JPanel ControlsPanel() {
+    public JPanel controlsPanel() {
         // Moves and battle log
         JPanel controls = new JPanel();
         controls.setLayout(new GridBagLayout());
@@ -80,7 +71,7 @@ public class BattleComponents {
         c.gridy = 0;
         controls.add(middle, c);
 
-        JPanel movesP1 = MovesContainer(this.p1Prof, text);
+        JPanel movesP1 = movesContainer(this.p1Prof, text);
         c.fill = GridBagConstraints.BOTH;
         c.ipady = 40;
         c.gridx = 0;
@@ -88,7 +79,7 @@ public class BattleComponents {
         controls.add(movesP1, c);
 
 
-        JPanel movesP2 = MovesContainer(this.p2Prof, text);
+        JPanel movesP2 = movesContainer(this.p2Prof, text);
         c.fill = GridBagConstraints.BOTH;
         c.gridx = 2;
         c.gridy = 0;
@@ -98,17 +89,21 @@ public class BattleComponents {
         return controls;
     }
 
-    public JPanel BattlefieldJPanel() {
+    public JPanel battlefieldJPanel() {
         JPanel battlefield = new JPanel();
         battlefield.setLayout(new GridLayout(0, 2));
-        JPanel p1Panel = PlayerPanel(this.p1Prof);
-        JPanel p2Panel = PlayerPanel(this.p2Prof);
+        this.p1Panel = new PlayerPanel(this.p1Prof);
+        this.p2Panel = new PlayerPanel(this.p2Prof);
         battlefield.add(p1Panel);
         battlefield.add(p2Panel);
         return battlefield;
     }
 
-    public void UpdateBattleText(String t) {
+    public void updateBattleText(String t) {
         text.setText(t);
+    }
+    public void updateHp(Professor p1, Professor p2) {
+        p1Panel.updateHp(p1.getCurrentHp());
+        p2Panel.updateHp(p2.getCurrentHp());
     }
 }

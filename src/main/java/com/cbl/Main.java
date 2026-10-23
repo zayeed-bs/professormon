@@ -1,10 +1,6 @@
 package com.cbl;
-import java.util.HashMap;
 
-import com.cbl.professor.BattleLogic;
 import com.cbl.professor.Library;
-import com.cbl.professor.Professor;
-import com.cbl.professor.move.Move;
 import com.cbl.window.StartWindow.StartWindow;
 
 public class Main {
@@ -14,7 +10,11 @@ public class Main {
         lib.initializeLibrary();
 
         // Choose pokemon
-        StartWindow start = new StartWindow(lib.getProfessors()[0], lib.getProfessors()[1], lib.getProfessors()[2]);
+        StartWindow start = new StartWindow(
+            lib.getProfessors()[0],
+            lib.getProfessors()[1],
+            lib.getProfessors()[2]
+        );
         start.initializeStartWindow();
     }
 }

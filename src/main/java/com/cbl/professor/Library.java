@@ -10,8 +10,9 @@ import com.cbl.professor.move.DamagingMove;
 import com.cbl.professor.move.Move;
 import com.cbl.professor.move.StatMove;
 
+
 public abstract class Library {
-    private Move[] MOVES = new Move[12];
+    private Move[] moves = new Move[12];
     private Professor[] professors = new Professor[3];
 
     public Professor[] getProfessors() {
@@ -19,9 +20,8 @@ public abstract class Library {
     }
 
     public Move[] getMoves() {
-        return MOVES;
+        return moves;
     }
-
 
     // Professor definition
     public void initializeLibrary() {
@@ -41,20 +41,20 @@ public abstract class Library {
         Move bjornStatOpp = new StatMove("Tests at 7pm", 2, false);
         Move bjornStatSelf = new StatMove("End the lecture early", 2, true);
 
-        MOVES[0]  = basAttackLight;
-        MOVES[1]  = basAttackHeavy;
-        MOVES[2]  = basStatOpp;
-        MOVES[3]  = basStatSelf;
+        moves[0]  = basAttackLight;
+        moves[1]  = basAttackHeavy;
+        moves[2]  = basStatOpp;
+        moves[3]  = basStatSelf;
 
-        MOVES[4]  = keesAttackLight;
-        MOVES[5]  = keesAttackHeavy;
-        MOVES[6]  = keesStatOpp;
-        MOVES[7]  = keesStatSelf;
+        moves[4]  = keesAttackLight;
+        moves[5]  = keesAttackHeavy;
+        moves[6]  = keesStatOpp;
+        moves[7]  = keesStatSelf;
 
-        MOVES[8]  = bjornAttackLight;
-        MOVES[9]  = bjornAttackHeavy;
-        MOVES[10] = bjornStatOpp;
-        MOVES[11] = bjornStatSelf;
+        moves[8]  = bjornAttackLight;
+        moves[9]  = bjornAttackHeavy;
+        moves[10] = bjornStatOpp;
+        moves[11] = bjornStatSelf;
 
         // Sprites
         BufferedImage basIMG = null;

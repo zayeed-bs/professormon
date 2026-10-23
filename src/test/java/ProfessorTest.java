@@ -1,7 +1,9 @@
-import static org.junit.Assert.*;
-
 import javax.swing.ImageIcon;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,11 +32,23 @@ public class ProfessorTest {
         };
         sprite = new ImageIcon();
         // stats order: {hp, attack, defense, speed}
-        prof = new Professor("Test Prof", new int[] {70, 30, 80, 40}, moves, Professor.Type.LOGIC, sprite);
+        prof = new Professor(
+            "Test Prof", 
+            new int[] {70, 30, 80, 40}, 
+            moves, 
+            Professor.Type.LOGIC, 
+            sprite
+        );
     }
 
     private Professor profWith(int attack, int defense, int speed) {
-        return new Professor("P", new int[] {50, attack, defense, speed}, moves, Professor.Type.CALCULUS, sprite);
+        return new Professor(
+            "P", 
+            new int[] {50, attack, defense, speed}, 
+            moves, 
+            Professor.Type.CALCULUS, 
+            sprite
+        );
     }
 
     // ---------- constructor / getters ----------

@@ -1,11 +1,11 @@
 package com.cbl.professor;
 
+import java.util.HashMap;
+import java.util.Random;
+
 import com.cbl.professor.move.DamagingMove;
 import com.cbl.professor.move.Move;
 import com.cbl.professor.move.StatMove;
-
-import java.util.HashMap;
-import java.util.Random;
 
 public class BattleLogic {
     public String handleTurn(HashMap<Professor, Move> moveMap, Professor[] profs) {
@@ -29,12 +29,12 @@ public class BattleLogic {
                 }
 
             } else if (moveMap.get(p) instanceof StatMove) {
-                StatMove move = (StatMove)moveMap.get(p);
+                StatMove move = (StatMove) moveMap.get(p);
                 boolean updateState = updateStats(move, p, getOther(profs, i));
                 log += "\n";
-                log += move.GetOnSelf() ? "It increased his " : "It decreased the opponent's ";
+                log += move.getOnSelf() ? "It increased his " : "It decreased the opponent's ";
 
-                switch (move.GetStatToChange()) {
+                switch (move.getStatToChange()) {
                     case 0:
                         log += "attack. ";
                         break;
@@ -44,6 +44,8 @@ public class BattleLogic {
                     case 2:
                         log += "speed. ";
                         break;
+                    default:
+                        break;
                 }
             }
         }
@@ -52,32 +54,32 @@ public class BattleLogic {
     }
 
     public Professor[] orderBySpeed(Professor[] p) {
-        Professor[] p_sorted = new Professor[2];
+        Professor[] pSorted = new Professor[2];
 
-        if(p[0].currentSpeed > p[1].currentSpeed) {
+        if (p[0].currentSpeed > p[1].currentSpeed) {
             // same order, .clone to avoid errors
-            p_sorted = p.clone();
-        } else if (p[0].currentSpeed == p[1].currentSpeed){
+            pSorted = p.clone();
+        } else if (p[0].currentSpeed == p[1].currentSpeed) {
             // Speeds are matched, decide randomly
             Random rng = new Random();
-
-            int randomIndex = rng.nextInt(0,2);
-            p_sorted[0] = p[randomIndex];
-            p_sorted[1] = randomIndex == 0 ? p[1] : p[0];
+            int randomIndex = rng.nextInt(0, 2);
+            pSorted[0] = p[randomIndex];
+            pSorted[1] = randomIndex == 0 ? p[1] : p[0];
 
         } else {
             // reverse order
-            p_sorted[0] = p[1];
-            p_sorted[1] = p[0];
+            pSorted[0] = p[1];
+            pSorted[1] = p[0];
         }
         
-        return p_sorted;
+        return pSorted;
     }
 
     public int calculateDamage(DamagingMove move, Professor attacker, Professor defender) {
         // damage formula
         // variation between 0.75x to 1.25x
-        double ratio = 2.0 * attacker.currentAttack / (attacker.currentAttack + defender.currentDefense);
+        double ratio = 2.0 * attacker.currentAttack 
+            / (attacker.currentAttack + defender.currentDefense);
         double damage = move.getBaseDamage() * ratio * 0.5;
 
         Random rng = new Random();
@@ -88,13 +90,14 @@ public class BattleLogic {
     }
 
     public boolean updateStats(StatMove move, Professor attacker, Professor defender) {
-        if(move.GetOnSelf()) {
-            return attacker.modifyStat(move.GetStatToChange(), 10);
+        if (move.getOnSelf()) {
+            return attacker.modifyStat(move.getStatToChange(), 10);
         } else {
-            return defender.modifyStat(move.GetStatToChange(), -10);
+            return defender.modifyStat(move.getStatToChange(), -10);
         }
 
-        // return boolean will be used to display "Stat was increased / decreased" or "Stat could not be changed any further"
+        // return boolean will be used to display "Stat was increased / decreased" or 
+        // "Stat could not be changed any further"
     }
 
     public void updateHp(int damage, Professor p) {

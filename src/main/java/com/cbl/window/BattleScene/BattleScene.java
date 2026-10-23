@@ -1,8 +1,8 @@
 package com.cbl.window.BattleScene;
+
 import java.awt.BorderLayout;
 import java.util.HashMap;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.cbl.professor.BattleLogic;
@@ -15,15 +15,6 @@ public class BattleScene {
 
     // Components
     Window win;
-
-    JLabel ownName;
-    JLabel ownSprite;
-    JLabel ownHealth;
-
-    JLabel oppName;
-    JLabel oppSprite;
-    JLabel oppHealth;
-
     BattleComponents battleComponents;
     private boolean battleOver = false;
 
@@ -42,10 +33,10 @@ public class BattleScene {
         battleComponents = new BattleComponents(ownProfessor, oppProfessor);
 
         // battle field
-        JPanel battleField = battleComponents.BattlefieldJPanel();
+        JPanel battleField = battleComponents.battlefieldJPanel();
         win.frame.add(battleField, BorderLayout.CENTER);
 
-        JPanel controls = battleComponents.ControlsPanel();
+        JPanel controls = battleComponents.controlsPanel();
         win.frame.add(controls, BorderLayout.SOUTH);
 
         // add functionality to continue button
@@ -53,19 +44,23 @@ public class BattleScene {
             if (battleOver) {
                 win.frame.setVisible(false);
             }
-            HandleNext();
+            handleNext();
         });
     }
 
-    public void OpenBattleScene() {
+    public void openBattleScene() {
         win.frame.setVisible(true);
     }
 
-    public void HandleNext() {
+    public void handleNext() {
         if (battleComponents.selectedMoves.size() == 2) {
             BattleLogic bl = new BattleLogic();
-            String log = bl.handleTurn(battleComponents.selectedMoves, new Professor[] {ownProfessor, oppProfessor});
-            battleComponents.UpdateBattleText(log);
+            String log = bl.handleTurn(
+                battleComponents.selectedMoves, 
+                new Professor[] {ownProfessor, oppProfessor}
+            );
+            battleComponents.updateBattleText(log);
+            battleComponents.updateHp(ownProfessor, oppProfessor);
 
             // check for death
             if (log.contains("defeated")) {
@@ -75,7 +70,7 @@ public class BattleScene {
             // update hp as well
             battleComponents.selectedMoves = new HashMap<>();
         } else {
-            battleComponents.UpdateBattleText("Both players need to select a move.");
+            battleComponents.updateBattleText("Both players need to select a move.");
         }
     }
 }

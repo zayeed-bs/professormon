@@ -10,11 +10,11 @@ public class StatMove extends Move {
         this.onSelf = onSelf;
     }
 
-    public int GetStatToChange() {
+    public int getStatToChange() {
         return statToChange;
     }
 
-    public boolean GetOnSelf() {
+    public boolean getOnSelf() {
         return onSelf;
     }
 }

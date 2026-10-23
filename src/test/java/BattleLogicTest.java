@@ -1,11 +1,14 @@
-import static org.junit.Assert.*;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.swing.ImageIcon;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -127,7 +130,8 @@ public class BattleLogicTest {
     public void higherAttackDealsMoreDamageOnAverage() {
         Professor strong = makeProf("Strong", 100, 90, 50, 50);
         Professor weak = makeProf("Weak", 100, 10, 50, 50);
-        long strongTotal = 0, weakTotal = 0;
+        long strongTotal = 0;
+        long weakTotal = 0;
         for (int i = 0; i < 300; i++) {
             strongTotal += logic.calculateDamage(hit, strong, b);
             weakTotal += logic.calculateDamage(hit, weak, b);
@@ -139,7 +143,8 @@ public class BattleLogicTest {
     public void higherDefenseTakesLessDamageOnAverage() {
         Professor tanky = makeProf("Tanky", 100, 50, 90, 50);
         Professor squishy = makeProf("Squishy", 100, 50, 10, 50);
-        long tankyTotal = 0, squishyTotal = 0;
+        long tankyTotal = 0;
+        long squishyTotal = 0;
         for (int i = 0; i < 300; i++) {
             tankyTotal += logic.calculateDamage(hit, a, tanky);
             squishyTotal += logic.calculateDamage(hit, a, squishy);
@@ -151,7 +156,8 @@ public class BattleLogicTest {
     public void strongerMoveDealsMoreDamageOnAverage() {
         DamagingMove light = new DamagingMove("Light", 20);
         DamagingMove heavy = new DamagingMove("Heavy", 80);
-        long lightTotal = 0, heavyTotal = 0;
+        long lightTotal = 0;
+        long heavyTotal = 0;
         for (int i = 0; i < 300; i++) {
             lightTotal += logic.calculateDamage(light, a, b);
             heavyTotal += logic.calculateDamage(heavy, a, b);
@@ -164,7 +170,8 @@ public class BattleLogicTest {
         // FAILS until calculateDamage uses currentAttack / currentDefense
         Professor buffed = makeProf("Buffed", 100, 50, 50, 50);
         buffed.currentAttack = 100;
-        long buffedTotal = 0, normalTotal = 0;
+        long buffedTotal = 0;
+        long normalTotal = 0;
         for (int i = 0; i < 300; i++) {
             buffedTotal += logic.calculateDamage(hit, buffed, b);
             normalTotal += logic.calculateDamage(hit, a, b);
@@ -177,7 +184,8 @@ public class BattleLogicTest {
         // FAILS until calculateDamage uses currentAttack / currentDefense
         Professor debuffed = makeProf("Debuffed", 100, 50, 50, 50);
         debuffed.currentDefense = 1;
-        long debuffedTotal = 0, normalTotal = 0;
+        long debuffedTotal = 0;
+        long normalTotal = 0;
         for (int i = 0; i < 300; i++) {
             debuffedTotal += logic.calculateDamage(hit, a, debuffed);
             normalTotal += logic.calculateDamage(hit, a, b);

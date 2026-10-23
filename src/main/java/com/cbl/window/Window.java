@@ -1,4 +1,5 @@
 package com.cbl.window;
+
 import javax.swing.JFrame;
 
 public class Window {

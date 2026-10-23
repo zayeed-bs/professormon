@@ -63,7 +63,10 @@ public class StartWindow {
         bottomContainer.add(starButton);
         starButton.addActionListener(e -> {
             // check if the button was selected
-            if (p1SelectionGroup.getSelection() == null || p2SelectionGroup.getSelection() == null) {
+            boolean p1Missing = p1SelectionGroup.getSelection() == null;
+            boolean p2Missing = p2SelectionGroup.getSelection() == null;
+
+            if (p1Missing || p2Missing) {
                 starButton.setText("SELECT YOUR PROFESSOR!");
                 return;
             }
@@ -76,9 +79,9 @@ public class StartWindow {
 
             // Initialize battle scene with professors
             closeStartWindow();
-            BattleScene BattleScene = new BattleScene(profs[0], profs[1]);
-            BattleScene.initializeBattleScene();
-            BattleScene.OpenBattleScene();
+            BattleScene battleScene = new BattleScene(profs[0], profs[1]);
+            battleScene.initializeBattleScene();
+            battleScene.openBattleScene();
         });
         
 

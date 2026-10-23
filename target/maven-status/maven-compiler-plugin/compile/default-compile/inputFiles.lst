@@ -1,12 +1,12 @@
-/Users/zayeedbs/University/Intro to Programming/CBL/professormon/src/main/java/com/cbl/Main.java
-/Users/zayeedbs/University/Intro to Programming/CBL/professormon/src/main/java/com/cbl/professor/BattleLogic.java
-/Users/zayeedbs/University/Intro to Programming/CBL/professormon/src/main/java/com/cbl/professor/Library.java
-/Users/zayeedbs/University/Intro to Programming/CBL/professormon/src/main/java/com/cbl/professor/Professor.java
-/Users/zayeedbs/University/Intro to Programming/CBL/professormon/src/main/java/com/cbl/professor/move/DamagingMove.java
-/Users/zayeedbs/University/Intro to Programming/CBL/professormon/src/main/java/com/cbl/professor/move/Move.java
-/Users/zayeedbs/University/Intro to Programming/CBL/professormon/src/main/java/com/cbl/professor/move/StatMove.java
-/Users/zayeedbs/University/Intro to Programming/CBL/professormon/src/main/java/com/cbl/window/BattleScene/BattleComponents.java
-/Users/zayeedbs/University/Intro to Programming/CBL/professormon/src/main/java/com/cbl/window/BattleScene/BattleScene.java
-/Users/zayeedbs/University/Intro to Programming/CBL/professormon/src/main/java/com/cbl/window/StartWindow/ProfessorContainer.java
-/Users/zayeedbs/University/Intro to Programming/CBL/professormon/src/main/java/com/cbl/window/StartWindow/StartWindow.java
-/Users/zayeedbs/University/Intro to Programming/CBL/professormon/src/main/java/com/cbl/window/Window.java
+C:\Users\petra\Documents\Škola\Q1\Programming\CBL\professormon\src\main\java\com\cbl\Main.java
+C:\Users\petra\Documents\Škola\Q1\Programming\CBL\professormon\src\main\java\com\cbl\professor\BattleLogic.java
+C:\Users\petra\Documents\Škola\Q1\Programming\CBL\professormon\src\main\java\com\cbl\professor\Library.java
+C:\Users\petra\Documents\Škola\Q1\Programming\CBL\professormon\src\main\java\com\cbl\professor\move\DamagingMove.java
+C:\Users\petra\Documents\Škola\Q1\Programming\CBL\professormon\src\main\java\com\cbl\professor\move\Move.java
+C:\Users\petra\Documents\Škola\Q1\Programming\CBL\professormon\src\main\java\com\cbl\professor\move\StatMove.java
+C:\Users\petra\Documents\Škola\Q1\Programming\CBL\professormon\src\main\java\com\cbl\professor\Professor.java
+C:\Users\petra\Documents\Škola\Q1\Programming\CBL\professormon\src\main\java\com\cbl\window\BattleScene\BattleComponents.java
+C:\Users\petra\Documents\Škola\Q1\Programming\CBL\professormon\src\main\java\com\cbl\window\BattleScene\BattleScene.java
+C:\Users\petra\Documents\Škola\Q1\Programming\CBL\professormon\src\main\java\com\cbl\window\StartWindow\ProfessorContainer.java
+C:\Users\petra\Documents\Škola\Q1\Programming\CBL\professormon\src\main\java\com\cbl\window\StartWindow\StartWindow.java
+C:\Users\petra\Documents\Škola\Q1\Programming\CBL\professormon\src\main\java\com\cbl\window\Window.java
